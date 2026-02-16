@@ -13,6 +13,4 @@ app.use("/api/users", require("./src/routes/user.routes"));
 app.use("/api/songs", require("./src/routes/song.routes"));
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

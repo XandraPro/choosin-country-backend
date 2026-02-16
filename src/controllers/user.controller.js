@@ -1,4 +1,4 @@
-const User = require('../models/user.model');
+const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -7,8 +7,8 @@ exports.register = async (req, res) => {
 
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = await User({ username, email, password: hashedPassword });
-        const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const newUser = await User.create({ username, email, password: hashedPassword });
+        const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: '1d' });
         res.json({ user: newUser, token });
     } catch (error) {
         res.status(500).json({ message: 'Error registering user', error });

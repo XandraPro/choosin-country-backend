@@ -1,17 +1,17 @@
-const song = require('../models/song.model');
+const Song = require('../models/Song');
 
 exports.getSongs = async (req, res) => {
-    const songs = await song.find( {user: req.user} );
+    const songs = await Song.find( {user: req.user} );
     res.json(songs);            
 }
 
 exports.createSong = async (req, res) => {
-    const newSong = await song.create({...req.body, user: req.user});
+    const newSong = await Song.create({...req.body, user: req.user});
     res.json(newSong);
 }
 
 exports.updateSong = async (req, res) => {
-    const updatedSong = await song.findOneAndUpdate(
+    const updatedSong = await Song.findOneAndUpdate(
         {_id: req.params.id, user: req.user},
         req.body,
         {new: true}
@@ -20,7 +20,7 @@ exports.updateSong = async (req, res) => {
 }
 
 exports.deleteSong = async (req, res) => {
-    await song.findOneAndDelete({_id: req.params.id, user: req.user});
+    await Song.findOneAndDelete({_id: req.params.id, user: req.user});
     res.json({message: 'Song deleted'});
 }   
     

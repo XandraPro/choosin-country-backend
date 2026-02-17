@@ -16,6 +16,7 @@ app.use(express.json());
 
 app.use("/api/users", require("./src/routes/user.routes"));
 app.use("/api/songs", require("./src/routes/song.routes"));
+app.use("/api/itunes", require("./src/routes/itunes.routes"));
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("Connected to MongoDB"))

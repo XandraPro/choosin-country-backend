@@ -14,6 +14,9 @@ app.get("/", (req, res) => {
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/users", require("./src/routes/user.routes"));
+app.use("/api/songs", require("./src/routes/song.routes"));
+
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("Connected to MongoDB"))
     .catch((error) => console.error("Error connecting to MongoDB:", error));

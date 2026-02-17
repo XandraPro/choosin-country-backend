@@ -6,6 +6,7 @@ dotenv.config();
 
 const app = express();
 
+// show conection to the server
 app.get("/", (req, res) => {
     res.send("Welcome to the Choosin' Country API!");
 });

@@ -27,3 +27,7 @@ mongoose.connect(process.env.MONGO_URI)
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     });
+
+// Global error handling middleware
+const errorHandler = require("./src/middleware/errorHandler");
+app.use(errorHandler);

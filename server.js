@@ -18,10 +18,12 @@ app.use("/api/users", require("./src/routes/user.routes"));
 app.use("/api/songs", require("./src/routes/song.routes"));
 app.use("/api/itunes", require("./src/routes/itunes.routes"));
 
+const PORT = process.env.PORT || 5000;
+
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("Connected to MongoDB"))
     .catch((error) => console.error("Error connecting to MongoDB:", error));
 
-    app.listen(process.env.PORT || 5000, () => {
-        console.log(`Server is running on port ${process.env.PORT || 5000}`);
-    }); 
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });

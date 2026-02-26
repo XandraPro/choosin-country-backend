@@ -29,5 +29,5 @@ mongoose.connect(process.env.MONGO_URI)
     });
 
 // Global error handling middleware
-const errorHandler = require("./src/middleware/errorHandler");
+const errorHandler = require("./src/middlewares/error.middleware");
 app.use(errorHandler);

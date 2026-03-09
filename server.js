@@ -14,9 +14,10 @@ app.get("/", (req, res) => {
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/users", require("./src/routes/user.routes"));
+app.use("/api/users", require("./src/routes/auth.routes"));
 app.use("/api/songs", require("./src/routes/song.routes"));
-app.use("/api/itunes", require("./src/routes/itunes.routes"));
+app.use("/api/comments", require("./src/routes/comment.routes"));
+app.use("/api/stats", require("./src/routes/stats.routes"));
 
 const PORT = process.env.PORT || 5000;
 

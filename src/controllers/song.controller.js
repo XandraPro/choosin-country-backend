@@ -2,6 +2,7 @@ const Song = require("../models/Song");
 const User = require("../models/User");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/AppError");
+const Comment = require("../models/Comment");
 
 exports.getSongs = catchAsync(async (req, res, next) => {
   const songs = await Song.find();
@@ -106,11 +107,16 @@ exports.deleteMySong = catchAsync(async (req, res, next) => {
     $pull: { savedSongs: songId },
   });
 
+  await Comment.deleteMany({
+    song: songId,
+    user: req.user._id,
+  });
+
   res.status(200).json({
     status: "success",
-    message: "Song removed from saved songs",
+    message: "Song removed from saved songs and your comments were deleted",
   });
-});
+});;
 
 exports.voteSong = catchAsync(async (req, res, next) => {
   const song = await Song.findById(req.params.songId);

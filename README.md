@@ -35,8 +35,11 @@ npm install
 ## Create an env file
 
 MONGO_URI=your_mongodb_connection_string
+
 JWT_SECRET=your_jwt_secret
+
 TICKETMASTER_API_KEY=your_ticketmaster_api_key
+
 PORT=4000
 
 ## Run the server
